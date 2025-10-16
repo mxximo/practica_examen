@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('abilities_employees', function (Blueprint $table) {
             $table->id();
+
+            $table->unsignedBigInteger('employee_id')->nullable();
+            $table->foreign('employee_id')->references('id')->on('employees')->onDelate('cascade');
+
+            $table->unsignedBigInteger('ability_id')->nullable();
+            $table->foreign('ability_id')->references('id')->on('abilities')->onDelate('cascade');
             $table->timestamps();
         });
     }

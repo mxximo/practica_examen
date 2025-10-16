@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('poblacion');
             $table->string('direccion');
 
-            $table->unsignedBigInteger('abilitie_employee_id');
+            $table->unsignedBigInteger('employee_id')->nullable();
            //$table->foreign('abilitie_employee_id')->references('id')->on('abilities_employees')->onDelate('cascade');
             $table->timestamps();
         });

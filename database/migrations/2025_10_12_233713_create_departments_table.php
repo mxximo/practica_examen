@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('presupuesto');
 
-            $table->unsignedBigInteger('center_id');
+            $table->unsignedBigInteger('center_id')->nullable();
             //$table->foreign('center_id')->references('id')->on('centers')->onDelate('cascade');
             $table->timestamps();
             

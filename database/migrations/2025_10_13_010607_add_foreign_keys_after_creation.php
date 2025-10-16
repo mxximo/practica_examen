@@ -20,7 +20,7 @@ return new class extends Migration
         });
 
         Schema::table('centers', function (Blueprint $table){
-            $table->foreign('abilitie_employee_id')->references('id')->on('abilities_employees')->nullOnDelate();
+            $table->foreign('employee_id')->references('id')->on('employees')->nullOnDelate();
         }); 
     }
 
