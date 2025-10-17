@@ -12,7 +12,8 @@ class AbilityController extends Controller
      */
     public function index()
     {
-        //
+        $ability = Ability::all();
+        return view('ability.index', compact('ability'));
     }
 
     /**
@@ -20,7 +21,7 @@ class AbilityController extends Controller
      */
     public function create()
     {
-        //
+        return view('ability.create');
     }
 
     /**
@@ -28,7 +29,12 @@ class AbilityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'descripcion' => 'nullable|string|max:255',
+        ]);
+
+        Ability::create($request->all());
+        return redirect()->route('ability.index');
     }
 
     /**
@@ -44,7 +50,7 @@ class AbilityController extends Controller
      */
     public function edit(Ability $ability)
     {
-        //
+        return view('ability.edit', compact('ability'));
     }
 
     /**
@@ -52,7 +58,12 @@ class AbilityController extends Controller
      */
     public function update(Request $request, Ability $ability)
     {
-        //
+        $request->validate([
+            'descripcion' => 'nullable|string|max:255',
+        ]);
+
+        $ability->update($request->all());
+        return redirect()->route('ability.index');
     }
 
     /**
@@ -60,6 +71,7 @@ class AbilityController extends Controller
      */
     public function destroy(Ability $ability)
     {
-        //
+        $ability->delete();
+        return redirect()->route('ability.index');
     }
 }
